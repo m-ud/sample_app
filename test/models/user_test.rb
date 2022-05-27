@@ -54,6 +54,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')#記憶トークンが空白の場合、falseとなるべき
+  end
+  
   test "associated microposts should be destroyed" do
     @user.save
     @user.microposts.create!(content: "Lorem ipsum")
