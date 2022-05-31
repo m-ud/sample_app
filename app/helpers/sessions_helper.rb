@@ -17,7 +17,7 @@ module SessionsHelper
             @current_user ||= User.find_by(id: user_id)
         elsif (user_id = cookies.encrypted[:user_id]) #一時セッションが無ければcookieからユーザーを取り出す
             user = User.find_by(id: user_id)
-            if user && user.authenticated?(cookies[:remember_token])#ユーザーのtokenを確認して、問題がなければログイン
+            if user && user.authenticated?(:remember, cookies[:remember_token])#ユーザーのtokenを確認して、問題がなければログイン
                 log_in user
                 @current_user = user
             end
