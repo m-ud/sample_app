@@ -1,10 +1,7 @@
 require 'benchmark/ips'
-STRING_HASH = {"foo" => "bar"}
-SYMBOL_HASH = {:foo => "bar"}
-INTEGER_HASH = {1 => "bar"}
+a = [['C', 14], ['A', 3], ['B', 5], ['E', 50], ['D', 23]]
 Benchmark.ips do |x|
-  x.report("String"){STRING_HASH["foo"]}
-  x.report("Symbol"){SYMBOL_HASH[:foo]}
-  x.report("Integer"){INTEGER_HASH[1]}
+  x.report("a=a.sort")  {  a=a.sort }
+  x.report("a.sort!")  {  a.sort!  }
   x.compare!
 end

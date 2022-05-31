@@ -28,6 +28,11 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  #メールプレビュー
+  host = '<hex string>.vfs.cloud9.ap-northeast-1.amazonaws.com'
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
